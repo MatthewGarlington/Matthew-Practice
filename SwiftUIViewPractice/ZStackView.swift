@@ -33,6 +33,35 @@ struct ZStackView: View {
                     
                 }
                 
+          
+                
+                ZStack(alignment: .bottom) {
+                    
+                    Image("Virginia")
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                        .frame(width: 200 , height: 200)
+                   
+                    Spacer()
+                        .frame(width: 200 , height: 200)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .center, endPoint: .bottom))
+                        .clipShape(Circle())
+                       
+                    Text("Virginia")
+                        .foregroundColor(.white)
+                        .bold()
+                        .padding()
+                    
+                    
+                    
+                }
+                
+                Text("This shows the ability to use a ZStack to display Text on top of an Image. An opacity gradient is given in order for the text to better stand out on the dark image")
+                    .bold()
+                    .padding()
+                    
+                
             }
         }
     }
