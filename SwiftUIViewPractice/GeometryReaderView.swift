@@ -9,12 +9,83 @@ import SwiftUI
 
 struct GeometryReaderView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+                Text("Geometry Reader")
+                    .font(.largeTitle)
+                Text("Getting Size")
+                    .bold()
+                    .font(.title)
+                
+                Spacer()
+      
+            
+            GeometryReader { geometryProxy in
+                VStack(spacing: 10) {
+                    
+                    Text("Width: \(geometryProxy.size.width)")
+                   
+                    Text("Height: \(geometryProxy.size.height)")
+                    
+                    Text("The area in Pink is what the numbers represent from the geometry reader")
+                    
+                    // Using Position
+                    
+                    Text("Upper Left")
+                        .bold()
+                        .position(x: geometryProxy.size.width / 5, y: geometryProxy.size.height / 10)
+                    Text("Bottom Right")
+                        .bold()
+                        .position(x: geometryProxy.size.width - 125, y: geometryProxy.size.height / 4 )
+          
+                }
+                .foregroundColor(.white)
+                .font(.title)
+                .padding()
+            }
+            
+            .background(Color.pink)
+        }
     }
 }
 
-struct GeometryReaderView_Previews: PreviewProvider {
+//struct GeometryReaderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GeometryReaderView()
+//    }
+//}
+
+import SwiftUI
+
+struct GeometryReaderCoordinates: View {
+    var body: some View {
+        VStack {
+                Text("Geometry Reader")
+                    .font(.largeTitle)
+                Text("Getting Coordinates")
+                    .bold()
+                    .font(.title)
+                
+                Spacer()
+      
+            GeometryReader { geometryProxy in
+                VStack(spacing: 20) {
+                Text("X: \(geometryProxy.frame(in: CoordinateSpace.global).origin.x)")
+                    .bold()
+                Text("Y: \(geometryProxy.frame(in: CoordinateSpace.global).origin.y)")
+                    .bold()
+                }
+                .padding()
+                .font(.title)
+              
+            }
+            .background(Color.pink)
+            
+        }
+    }
+}
+
+struct GeometryReaderCoordinates_Previews: PreviewProvider {
     static var previews: some View {
-        GeometryReaderView()
+        GeometryReaderCoordinates()
     }
 }
