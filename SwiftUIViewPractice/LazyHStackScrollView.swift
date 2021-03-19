@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LazyHStackScrollView: View {
     var names = ["Ronda", "Melton", "Paula", "Ruiz", "Kelsey", "Thompson", "Violet", "Virginia"]
     
     var body: some View {
@@ -18,6 +18,15 @@ struct ContentView: View {
                 Text("With PinnedViews")
                     .font(.title)
             }
+            Spacer()
+            
+            VStack {
+                Text("This use case gives the ability for a horizontal scroll to be loaded lazily. This means the views will not be loaded when off the screen to improve performance. The pinnedViews Give the ability for the header to stick until the footer is shown.")
+                    .font(.headline)
+                    .padding()
+            
+            }
+            
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 5, pinnedViews: [.sectionHeaders, .sectionFooters]) {
                         Section(header: TeamHeaderView(), footer: TeamFooterView()) {
@@ -37,9 +46,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct LazyHStackScrollView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LazyHStackScrollView()
     }
 }
 
@@ -48,7 +57,7 @@ struct TeamHeaderView: View {
    
     var body: some View {
         VStack(spacing: 8) {
-            Text("Team")
+            Text("People")
                 .font(.title2)
             Image(systemName: "checkmark")
                 .font(.system(size: 50))
@@ -65,7 +74,7 @@ struct TeamFooterView: View {
    
     var body: some View {
         VStack(spacing: 8) {
-            Text("Team")
+            Text("People")
                 .font(.title2)
             Image(systemName: "checkmark")
                 .font(.system(size: 50))

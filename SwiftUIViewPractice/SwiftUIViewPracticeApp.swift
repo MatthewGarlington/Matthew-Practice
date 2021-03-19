@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftUIViewPracticeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LazyHStackScrollView()
         }
     }
 }
