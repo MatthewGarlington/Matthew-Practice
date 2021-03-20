@@ -54,7 +54,7 @@ struct GeometryReaderView: View {
 //    }
 //}
 
-import SwiftUI
+
 
 struct GeometryReaderCoordinates: View {
     var body: some View {
@@ -84,8 +84,46 @@ struct GeometryReaderCoordinates: View {
     }
 }
 
-struct GeometryReaderCoordinates_Previews: PreviewProvider {
-    static var previews: some View {
-        GeometryReaderCoordinates()
+//struct GeometryReaderCoordinates_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GeometryReaderCoordinates()
+//    }
+//}
+
+
+struct GeometryReaderCoordinatesMinMidMax: View {
+    var body: some View {
+        VStack {
+                Text("Geometry Reader")
+                    .font(.largeTitle)
+                Text("Getting Min, Mid, and Max Coordinates")
+                    .bold()
+                    .font(.title)
+                
+                Spacer()
+      
+            GeometryReader { geometryProxy in
+                VStack(spacing: 20) {
+                    Text("minY: \(geometryProxy.frame(in: CoordinateSpace.global).minY)")
+                    .bold()
+                    Text("midY: \(geometryProxy.frame(in: CoordinateSpace.global).midY)")
+                    .bold()
+                    Text("maxY: \(geometryProxy.frame(in: CoordinateSpace.global).maxY)")
+                        .bold()
+                }
+                .padding()
+                .font(.title)
+              
+            }
+            .background(Color.pink)
+            
+        }
     }
 }
+
+struct GeometryReaderCoordinatesMinMidMax_Previews: PreviewProvider {
+    static var previews: some View {
+        GeometryReaderCoordinatesMinMidMax()
+    }
+}
+
